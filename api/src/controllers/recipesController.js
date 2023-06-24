@@ -4,12 +4,14 @@ require('dotenv').config();
 const { API_KEY } = process.env;
 const { infoCleaner } = require("../utils/genericFunctions.js");
 
+//Ruta para obtener una receta por ID:
+// FALTA:
+// Tiene que incluir los datos de los tipos de dietas asociados a la receta.
 const getRecipeById = async (id, source) => {
     const recipe = 
         source === "api"
             // ? (await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)).data
             ? (await axios.get(`http://localhost:8080/recipes/${id}/information?apiKey=${API_KEY}`)).data
-            //https://api.spoonacular.com/recipes/715497/information?apiKey=e7726fffc5904a699860cf7cd8f4240a  //&addRecipeInformation=true
             : await Recipe.findByPk(id,{
                 include: {
                     model: Diet,
@@ -19,7 +21,7 @@ const getRecipeById = async (id, source) => {
             return recipe;
 };
 
-// traer todas las recetas de la base de datos:
+// Trae todas las recetas de la base de datos y de la API:
 const getAllRecipes = async ()=>{
     const recipesDB = await Recipe.findAll();// nos va a devolver todas las coincidencias dentro de nuestra tabla de recetas en la DB
     // const infoApi = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)).data.results;
@@ -28,9 +30,10 @@ const getAllRecipes = async ()=>{
     return [...recipesDB, ...recipesApi];
 };
 
-//obtener receta por name:
+//Obtener receta por nombre:
+// FALTA:
+// Debe poder buscarla independientemente de mayúsculas o minúsculas
 const getRecipeByName = async (name) => {
-    // quiero filtrar todos los usuarios por el nombre que me viene por query, si no viene nada devuelvo un arr vacio
     // const infoRecipesApi = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)).data.results;
     const infoRecipesApi = (await axios.get(`http://localhost:8080/recipes/complexSearch?addRecipeInformation=true&number=100&apiKey=${API_KEY}`)).data.results;
     const recipesApi = infoCleaner(infoRecipesApi);
@@ -41,7 +44,10 @@ const getRecipeByName = async (name) => {
     return recipeById;
 };
 
-//crear una receta:
+//Crear una receta:
+// FALTA:
+// Esta ruta recibirá todos los datos necesarios para crear una nueva receta y relacionarla con los tipos de dieta solicitados.
+// Debe crear la receta en la base de datos, y esta debe estar relacionada con los tipos de dieta indicados (al menos uno).
 const createRecipeDB = async (name, image, summary, healthScore, step) => {
     const newRecipe = await Recipe.create({name, image, summary, healthScore, step})//crea un objeto que tiene las especificaciones del prototipo
     return newRecipe;
