@@ -30,6 +30,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+   /*  created: { // tag que me permite saber si un usuario viene de la api o de la DB
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    }, */
   },{timestamps:false}//para que no me aparezcan los campos de fecha en la que se creo el usuario
   );
 };
