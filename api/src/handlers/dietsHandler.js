@@ -1,4 +1,4 @@
-const { getDietsByApi } = require("../controllers/dietsController");
+const { getDietsByApi } = require("../controllers/dietsControllers");
 
 const getDietsHandler = async (req,res) => {
     try {
