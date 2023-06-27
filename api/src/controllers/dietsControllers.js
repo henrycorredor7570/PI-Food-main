@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 const getDietsByApi = async () => {
  
   const infoApi = await axios.get(`http://localhost:8080/recipes/complexSearch?addRecipeInformation=true&number=100&apiKey=${API_KEY}`); // obtengo la informacion de la API
-  const dietsSet = new Set();// con el Set() los datos ingresados no se pueden repetir y me devuelve un objeto vacio
+  const dietsSet = new Set();// con el Set() los datos ingresados no se pueden repetir y me devuelve un objeto vacio.
 
   infoApi.data.results.forEach( diet => {// recorro el data.results que es un arreglo de la informacion recibida en infoApi 
     diet.diets.forEach(element => dietsSet.add(element))//recorro los subarrays de diets y agrego cada elemento a dietsSet 

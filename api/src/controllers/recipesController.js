@@ -6,7 +6,7 @@ const { infoCleaner } = require("../utils/genericFunctions.js");
 
 //Ruta para obtener una receta por ID:
 // FALTA:
-// Tiene que incluir los datos de los tipos de dietas asociados a la receta.
+// Tiene que incluir los datos de los tipos de dietas asociados a la receta
 const getRecipeById = async (id, source) => {
     const recipe = 
         source === "api"
