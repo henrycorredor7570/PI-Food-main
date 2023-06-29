@@ -14,7 +14,7 @@ const getDietsByApi = async () => {
   const arrDiets = Array.from(dietsSet); // el ojeto dietsSet lo convierto en array
 
   for(const diet of arrDiets){ // recorro el array final con todas las dietas existentes 
-    await Diet.findOrCreate({where: {name: diet},});//creo con mi modelo cada una de las dietas recibidas en la propiedad nombre
+    await Diet.findOrCreate({where: {nameDiet: diet},});//creo con mi modelo cada una de las dietas recibidas en la propiedad nombre
   }
 
   return (arrDiets);

@@ -22,6 +22,19 @@ const infoCleaner = (arr) => { // funcion para limpiar la informacion que me tra
 
 };
 
+//validacion para requerir todos los campos
+const validateCreateRecipe = (req,res,next) => {
+    const { name, image, summary, healthScore, step } = req.body;
+    if(!name) return res.status(400).json({error:"Required name"});
+    if(!image) return res.status(400).json({error:"Required image"});
+    if(!summary) return res.status(400).json({error:"Required summary"})
+    if(!healthScore) return res.status(400).json({error:"Required healthScore"})
+    if(!step) return res.status(400).json({error:"Required step"})
+
+    next();
+}
+
 module.exports = {
     infoCleaner,
+    validateCreateRecipe,
 }

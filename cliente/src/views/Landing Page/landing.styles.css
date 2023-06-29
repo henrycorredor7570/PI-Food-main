@@ -1,0 +1,21 @@
+.pag-inicio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: url("../../assets/53636wide.jpg");
+    background-size: cover;
+}
+/* body {
+    background-image: url("../../assets/53636wide.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+ */
+
+/* para que no se repita la imagen de fondo como mosaico */
+/* ocupe espacios en blanco  */
+/* no se desproporcione */

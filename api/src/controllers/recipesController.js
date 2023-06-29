@@ -15,7 +15,7 @@ const getRecipeById = async (id, source) => {
             : await Recipe.findByPk(id,{
                 include: {
                     model: Diet,
-                    attributes: ["name"],//quiero que me incluya unicamente estas columnas
+                    attributes: ["nameDiet"],//quiero que me incluya unicamente estas columnas
                 },
             });
             return recipe;

@@ -1,0 +1,9 @@
+/* CONTENEDOR DE TODAS LAS CARDS */
+.cards-list {
+    width: 85vw; /* para que ocupe el 85 % del browser de la ventana y funciona para cualuqier tamaño de pantalla */
+    margin: 0 auto;
+    display: grid;/* me divide los elementos de este contenedor en pequeños contenedores */
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* y esos contenedores los genera en 4 columnas todas con el mismo tamaño */
+    grid-gap: 20px;/* un espacio entre cada tarjeta de 20px */
+
+}

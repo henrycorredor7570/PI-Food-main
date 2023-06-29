@@ -1,0 +1,17 @@
+.card-container{
+    display: flex; /* para que tengan libertad todos los elementos dentro de este contenedor y se puedan mover donde quieran */
+    flex-direction: column;/* para que los separe y los ponga en linea */
+    background-color: #95dada;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;/* el salto de la tarjeta sea gradual con ease-out */
+}
+
+.card-container:hover {/* al pasar encima de la tarjeta y con scale que se agrande a 1.05 */
+    transform: scale(1.05);
+}

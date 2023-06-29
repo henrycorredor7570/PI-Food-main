@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4//aqui se crea el numero aleatorio
     },
-    name: {
+    nameDiet: {
       type: DataTypes.STRING,
       allowNull: false,
     },
