@@ -1,6 +1,6 @@
-import './detail.styles.css';
+import './detail.module.css';
 
-function Detail() {
+const Detail = () => {
   return (
     <div>
       <h1>DETAIL</h1>

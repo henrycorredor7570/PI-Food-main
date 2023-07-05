@@ -1,9 +1,0 @@
-.search-box{
-    -webkit-appearance: none;
-    border: none; /* le quito el borde */
-    outline: none;/* le quito la linea externa */
-    padding: 10px;
-    width: 150px;
-    line-height: 30px;/* altura de la linea */
-    margin-bottom: 30px;
-}

@@ -1,5 +1,4 @@
-/* CONTENEDOR DE TODAS LAS CARDS */
-.cards-list {
+.cardsList {
     width: 85vw; /* para que ocupe el 85 % del browser de la ventana y funciona para cualuqier tamaño de pantalla */
     margin: 0 auto;
     display: grid;/* me divide los elementos de este contenedor en pequeños contenedores */

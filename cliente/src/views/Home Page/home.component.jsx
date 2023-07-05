@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRecipes, getRecipesByName } from '../../redux/actions';
 import NavBar from '../../components/Navbar/navbar.component';
 import Cards from '../../components/Cards/cards.component';
-import './home.styles.css';
+import './home.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();// dispatch es la manera en que yo le envio una action al store
@@ -24,9 +24,10 @@ const Home = () => {
     dispatch(getRecipesByName(searchName))
   }
 
-  useEffect(()=>{
+  useEffect(()=>{// cuando se monta el home se monta el use efect y hace inmediatamente el dispatch que ejecuta la accion
     dispatch(getRecipes())
-  },[dispatch]);
+  },[dispatch]);// este me sirve para cuando haya un cambio en la variable del array de dependencias
+  // el distpatch del medio se vuelva a ejecutar
 
   return (
     <div className='home'>

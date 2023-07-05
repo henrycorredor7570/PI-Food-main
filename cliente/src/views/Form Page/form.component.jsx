@@ -1,5 +1,5 @@
  
-import './form.styles.css';
+import './form.module.css';
 import Create from "../../components/Form/form.component";
 
 const Form = () => {

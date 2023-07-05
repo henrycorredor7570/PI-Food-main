@@ -5,7 +5,7 @@ let initialState = {
     recipesCopy: [],
     diets:[]};
 
-function rootReducer(state = initialState, action){
+const rootReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_RECIPES:
             return{
@@ -14,7 +14,7 @@ function rootReducer(state = initialState, action){
                 recipesCopy: action.payload,
             }
         default:
-            return state;
+            return {...state};
     }
 }
 

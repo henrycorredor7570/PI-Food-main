@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import './landing.styles.css';
+import './landing.module.css';
 
-function Landing() {
+const Landing = () => {
   return (
     <div className="pag-inicio">
       <h1>LANDING</h1>

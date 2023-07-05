@@ -5,7 +5,7 @@ const getDetailHandler = async (req,res) => {
     const {id} = req.params;
     const source = isNaN(id) ? "bdd" : "api";// si id no es un numero entonces: source = bdd y si es numero source = api  
     try {
-        const response = await getRecipeById(id,source);
+        const response = await getRecipeById(id, source);
         res.status(200).json(response);
     } catch (error) {
         res.status(400).json({error:error.message});
@@ -32,10 +32,10 @@ const getRecipesHandler = async (req,res) => {
 
 //crear una receta:
 const createRecipeHandler = async (req,res) => {
-    const { name, image, summary, healthScore, step } = req.body;
+    const { name, image, summary, healthScore, steps, nameDiet} = req.body;
     try {
-        const response = await createRecipeDB(name, image, summary, healthScore, step);
-        res.status(200).json(response);
+        const response = await createRecipeDB(name, image, summary, healthScore, steps, nameDiet);
+        res.status(201).json(response);
     } catch (error) {
         res.status(400).json({error:error.message})
     }
