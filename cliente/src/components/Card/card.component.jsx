@@ -1,20 +1,19 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "./card.module.css"; 
 
+
 const Card = ({recipe}) => {
-    const {name, image, diets} = recipe;// extraemos todas las propiedades atributos que recibo
-    // console.log(diets);
+    const {id, name, image, diets } = recipe;// extraemos todas las propiedades atributos que recibo
+    
     return (
         <div className={style.card}>
-            {/* esta informacion la saco de la api y esta la traigo de mi backend */}
-            {/* importante para el PI: */}
-            {/* <Link to={`home/${id}`}>ruta que me envia al detail */}
+            <Link to={`/detail/${id}`}>
                 <h2>{name}</h2>
                 <p>{diets}</p>
                 <img src={image} alt="" />
-            {/* </Link> */}
+            </Link>
         </div>
     );
 }
-
+ 
 export default Card;

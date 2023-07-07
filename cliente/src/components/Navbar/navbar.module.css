@@ -1,7 +1,7 @@
 .mainContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content:space-evenly;
     background-color: blanchedalmond;
     border-radius: 15px;
     border: 1px solid black;

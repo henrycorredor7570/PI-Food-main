@@ -25,8 +25,6 @@ server.use((req, res, next) => {
   next();
 });
 
-// server.use(express.json());//. para parsear el codigo de json a un objeto en js
-
 server.use('/', routes);
 
 // Error catching endware.
