@@ -3,7 +3,7 @@ import { GET_RECIPES, GET_BY_NAME } from "./action-types";
 
 
 export const getRecipes = () => {
-    return async function(dispatch){// hace un distpatch para poder llegar al reducer.
+    return async function(dispatch){// hace un distpatch para poder llegar al reducer
         try {
             const response = await axios.get(`http://localhost:3001/recipes`)
             
