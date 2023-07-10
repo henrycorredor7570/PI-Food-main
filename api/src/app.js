@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-const cors = require("cors"); //. es para controlar el acceso al servidor.
+const cors = require("cors"); //. es para controlar el acceso al servidor..
 
 require('./db.js');
 
