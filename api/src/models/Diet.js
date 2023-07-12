@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Diet', {
     id:{
-      type: DataTypes.UUID,//UUID es una combinacion de numeros, letras y guiones(codigo alfanumerico)
+      type: DataTypes.UUID,// UUID es una combinacion de numeros, letras y guiones(codigo alfanumerico)
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4//aqui se crea el numero aleatorio.
     },

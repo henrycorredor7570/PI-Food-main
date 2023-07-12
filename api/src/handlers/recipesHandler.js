@@ -3,7 +3,7 @@ const { getRecipeById, getRecipeByName, getAllRecipes, createRecipeDB } = requir
 // buscar detalles de una receta:
 const getDetailHandler = async (req,res) => {
     const {id} = req.params;
-    const source = isNaN(id) ? "bdd" : "api";// si id no es un numero entonces: source = bdd y si es numero source = api  
+    const source = isNaN(id) ? "bdd" : "api";// si id no es un numero .entonces: source = bdd y si es numero source = api  
     try {
         const response = await getRecipeById(id, source);
         res.status(200).json(response);
