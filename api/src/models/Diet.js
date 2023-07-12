@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
     id:{
       type: DataTypes.UUID,//UUID es una combinacion de numeros, letras y guiones(codigo alfanumerico)
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4//aqui se crea el numero aleatorio
+      defaultValue: DataTypes.UUIDV4//aqui se crea el numero aleatorio.
     },
     nameDiet: {
       type: DataTypes.STRING,
