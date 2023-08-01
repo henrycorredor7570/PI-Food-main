@@ -15,7 +15,6 @@ const getDetailHandler = async (req,res) => {
 // buscar por nombre:
 const getRecipesHandler = async (req,res) => {
     const {name} = req.query;
-
     try {
         if(name){
             const recipeByName = await getRecipeByName(name);
@@ -37,7 +36,7 @@ const createRecipeHandler = async (req,res) => {
         const response = await createRecipeDB(name, image, summary, healthScore, steps, nameDiet);
         res.status(201).json(response);
     } catch (error) {
-        res.status(400).json({error:error.message})
+        res.status(400).json({error:error.message});
     }
 }
 

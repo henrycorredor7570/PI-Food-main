@@ -24,7 +24,7 @@ const NavBar = () => {
     return (
         <div className={style.mainContainer}>
             <Link to="/form">FORM</Link>
-            <input placehoder="Search Recipe..." type="search"  onChange={handleInput}/>
+            <input placeholder="Search Recipe..." type="search"  onChange={handleInput}/>
             <button type="submit" onClick={handleSubmit}>Search</button>
         </div>
     )

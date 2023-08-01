@@ -19,6 +19,7 @@ server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); //... actualice para que coincida con el dominio desde el que realizará la solicitud.g
+  // con la linea de arriba se le da permiso al front de que pueda ingresar y hacer peticiones sin problema
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');

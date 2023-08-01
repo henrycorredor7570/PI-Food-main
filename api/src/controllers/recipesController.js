@@ -1,6 +1,6 @@
-const { Recipe, Diet , RecipeDiets } = require("../db.js");
+const { Recipe, Diet,  RecipeDiet } = require("../db.js");
 const axios = require("axios");
-const { Op } = require("sequelize");
+// const { Op } = require("sequelize");
 require('dotenv').config();
 const { API_KEY } = process.env;
 const { infoCleaner, infoCleanerById, normalizarCoincidencia } = require("../utils/genericFunctions.js");
@@ -25,23 +25,22 @@ const getRecipeById = async (id, source) => {
 
 // Trae todas las recetas de la base de datos y de la API:
 const getAllRecipes = async ()=>{
-    const recipesDB = await Recipe.findAll();//retorna toda la info de la DB
+    const recipesDB = await Recipe.findAll();//retorna un arreglo con toda la info de la DB
     // const infoApi = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)).data.results;
     const infoApi = (await axios.get(`http://localhost:8080/recipes/complexSearch?addRecipeInformation=true&number=100&apiKey=${API_KEY}`)).data.results;
-    const recipesApi = infoCleaner(infoApi);    
-    return [...recipesDB, ...recipesApi];//son arrays
+    const recipesApi = infoCleaner(infoApi); 
+    return [...recipesDB, ...recipesApi];
 };
 
 //Obtener receta por nombre:
+// (ARREGLAR ESTA FUNCION YA QUE LAS RECETAS YA SE PUEDEN OBTENER TODAS EN UNA FUNCION ANTERIOR)
 const getRecipeByName = async (name) => {
     // const infoRecipesApi = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)).data.results;
     const infoRecipesApi = (await axios.get(`http://localhost:8080/recipes/complexSearch?addRecipeInformation=true&number=100&apiKey=${API_KEY}`)).data.results;
     const recipesApi = infoCleaner(infoRecipesApi);
-    // const recipeFiltered = recipesApi.filter(recip => recip.name == name);
     const recipeFilteredApi = recipesApi.filter(recipe => normalizarCoincidencia(recipe.name).includes(normalizarCoincidencia(name)));
-    const recipeDb = await Recipe.findAll({where:{name: {[Op.substring]: name}}});//no esta funcionando el filtrado(Corregir)
-    // const filtByName = recipeDb.filter(recipe => recipe.name.includes(name));
-    //.toLowerCase() .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    
+    const recipeDb = await Recipe.findAll({where:{name}});//: {[Op.substring]: name}
     const recipeByName = [...recipeFilteredApi, ...recipeDb];
     if(recipeByName.length === 0) throw Error (`No hay recetas asociadas con el nombre: ${name}`);
     return recipeByName;
@@ -51,22 +50,20 @@ const getRecipeByName = async (name) => {
 const createRecipeDB = async (name, image, summary, healthScore, steps, nameDiet) => {
     const newRecipe = await Recipe.create({name, image, summary, healthScore, steps});//crea un objeto que tiene las especificaciones del prototipo
 
-    const recipeDiet = await Promise.all(
+    await Promise.all(
         nameDiet.map(async (diet) => {
-            const [newDiet] = await Diet.findOrCreate({
+            const [newDiet] = await Diet.findOrCreate({//se utiliza [newDiet] para desestructurar el resultado y obtener solo el primer elemento del array, ya que findOrCreate devuelve un array con el objeto encontrado o creado y un booleano indicando si se creó o no).
                 where: {nameDiet: diet},
                 defaults: {nameDiet: diet}
             });
-            await  RecipeDiets.create({
+            await  RecipeDiet.create({
                 RecipeId: newRecipe.id,
                 DietId: newDiet.id
             })
             return newDiet;
-        }));
-        return newRecipe;
-        
-
-    
+        })
+    );
+    return newRecipe;
 }
 
 

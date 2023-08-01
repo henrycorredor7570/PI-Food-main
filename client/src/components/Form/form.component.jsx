@@ -14,14 +14,7 @@ const Create = () => {
     nameDiet:[],
   });
 
-  const [errors, setErrors] = useState({
-    name:"",
-    summary:"",
-    healtScore:"",
-    steps:"",
-    image:"",
-    nameDiet:[],
-  });
+  const [errors, setErrors] = useState({});
   
   const handleOnChange = (event) => {
     setInput({

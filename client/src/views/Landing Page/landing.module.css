@@ -8,3 +8,7 @@
     background: url("../../assets/53636wide.jpg");
     background-size: cover;
 }
+
+.button{
+    background-color: rgb(241, 12, 24);
+}

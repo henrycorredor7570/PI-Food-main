@@ -1,7 +1,7 @@
 import './detail.module.css';
 
 import axios from "axios";
-import { useParams } from 'react-router-dom';///cjs/react-router-dom.min
+import { useParams } from 'react-router-dom';
 import {useState, useEffect} from "react";
 
 const Detail = () => {

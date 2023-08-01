@@ -11,3 +11,4 @@ router.use("/recipes", recipesRouter);//. cuando algun endpoint incluya /recipes
 router.use("/diets", dietsRouter);//. cuando algun endpoint incluya /diets dirigelo a dietsRouter
 
 module.exports = router;
+ 

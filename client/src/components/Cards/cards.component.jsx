@@ -16,7 +16,7 @@ const Cards = () => {
 
     return (
         <div className={style.cardsList}>
-            {allRecipes?.map(recipe => <Card recipe = {recipe}/>
+            {allRecipes?.map((recipe) => <Card recipe = {recipe}/>
             )}
         </div>  
     );
