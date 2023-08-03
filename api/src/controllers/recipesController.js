@@ -33,9 +33,9 @@ const getAllRecipes = async ()=>{
 };
 
 //Obtener receta por nombre:
-// (ARREGLAR ESTA FUNCION YA QUE LAS RECETAS YA SE PUEDEN OBTENER TODAS EN UNA FUNCION ANTERIOR).
+// (ARREGLAR ESTA FUNCION YA QUE LAS RECETAS YA SE PUEDEN OBTENER TODAS EN UNA FUNCION ANTERIOR)
 const getRecipeByName = async (name) => {
-    // const infoRecipesApi = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)).data.results;
+    // const infoRecipesApi = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)).data.results
     const infoRecipesApi = (await axios.get(`http://localhost:8080/recipes/complexSearch?addRecipeInformation=true&number=100&apiKey=${API_KEY}`)).data.results;
     const recipesApi = infoCleaner(infoRecipesApi);
     const recipeFilteredApi = recipesApi.filter(recipe => normalizarCoincidencia(recipe.name).includes(normalizarCoincidencia(name)));
