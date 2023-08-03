@@ -51,9 +51,9 @@ const validateCreateRecipe = (req,res,next) => {
     const { name, image, summary, healthScore, steps } = req.body;
     if(!name) return res.status(400).json({error:"Required name"});
     if(!image) return res.status(400).json({error:"Required image"});
-    if(!summary) return res.status(400).json({error:"Required summary"})
-    if(!healthScore) return res.status(400).json({error:"Required healthScore"})
-    if(!steps) return res.status(400).json({error:"Required steps"})
+    if(!summary) return res.status(400).json({error:"Required summary"});
+    if(!healthScore) return res.status(400).json({error:"Required healthScore"});
+    if(!steps) return res.status(400).json({error:"Required steps"});
 
     next();
 }
